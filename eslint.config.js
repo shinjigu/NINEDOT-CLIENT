@@ -5,6 +5,8 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import eslintPluginImport from 'eslint-plugin-import';
+import prettierPlugin from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
 
 export default tseslint.config({
   files: ['**/*.{ts,tsx}'],
@@ -18,6 +20,7 @@ export default tseslint.config({
     'react-hooks': reactHooks,
     'react-refresh': reactRefresh,
     import: eslintPluginImport,
+    prettier: prettierPlugin,
   },
   settings: {
     react: {
@@ -25,11 +28,7 @@ export default tseslint.config({
     },
   },
   ignores: ['node_modules', 'dist', 'dist-ssr'],
-  extends: [
-    js.configs.recommended,
-    ...tseslint.configs.recommended,
-    'eslint-config-prettier',
-  ],
+  extends: [js.configs.recommended, ...tseslint.configs.recommended, prettierConfig],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'no-console': 'warn',
@@ -39,20 +38,14 @@ export default tseslint.config({
     'import/order': [
       'warn',
       {
-        groups: [
-          ['builtin', 'external'],
-          'internal',
-          ['parent', 'sibling', 'index'],
-        ],
+        groups: [['builtin', 'external'], 'internal', ['parent', 'sibling', 'index']],
         'newlines-between': 'always',
       },
     ],
     'react/self-closing-comp': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
     ...reactHooks.configs.recommended.rules,
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'prettier/prettier': 'error',
   },
 });
