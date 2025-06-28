@@ -29,7 +29,7 @@ export default tseslint.config({
       version: 'detect',
     },
   },
-  ignores: ['node_modules', 'dist', 'dist-ssr'],
+  ignores: ['node_modules', 'dist', 'dist-ssr', '*.config.js', '*.config.ts'],
   extends: [
     js.configs.recommended,
     ...tseslint.configs.recommended,
