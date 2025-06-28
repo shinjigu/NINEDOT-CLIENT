@@ -44,6 +44,7 @@ export default tseslint.config({
     ],
     'react/self-closing-comp': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
+    'react/jsx-pascal-case': 'error',
     ...reactHooks.configs.recommended.rules,
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'prettier/prettier': 'error',
