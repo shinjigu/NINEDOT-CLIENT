@@ -11,9 +11,8 @@ phases:
       - ls -al dist
   post_build:
     commands:
-      - aws cloudfront create-invalidation \
-        --distribution-id $CLOUDFRONT_DISTRIBUTION_ID \
-        --paths "/*"
+      - echo "CLOUDFRONT_DISTRIBUTION_ID = '$CLOUDFRONT_DISTRIBUTION_ID'"
+      - aws cloudfront create-invalidation --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" --paths "/*"
 
 artifacts:
   files:
