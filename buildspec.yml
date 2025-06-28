@@ -9,8 +9,13 @@ phases:
       - npm run build
       - ls -al
       - ls -al dist
+  post_build:
+    commands:
+      - aws cloudfront create-invalidation \
+        --distribution-id $CLOUDFRONT_DISTRIBUTION_ID \
+        --paths "/*"
 
 artifacts:
   files:
-    - '**/*'
+    - "**/*"
   base-directory: dist
