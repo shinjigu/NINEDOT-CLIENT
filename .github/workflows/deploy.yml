@@ -43,7 +43,7 @@ jobs:
           destination-repository-name: NINEDOT-CLIENT
           user-email: ${{ secrets.EMAIL }}
           commit-message: ${{ github.event.head_commit.message || 'Auto Deploy' }}
-          target-branch: main
+          target-branch: develop
 
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
