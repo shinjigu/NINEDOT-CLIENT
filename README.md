@@ -1,7 +1,11 @@
+![image](https://github.com/user-attachments/assets/23f8c862-ffe7-4b7a-8f42-962cc218f2a5)
+
 # NiNE Dot˙ 
 
-## 📍 서비스 소개
-
+**목표 관리를 시스템화하세요. 생각은 우리가 도와드릴게요.**
+- 만다르트 작성
+- AI 할 일 추천
+- 진척도 및 주간 회고
 
 ## ⚒️ FE Developer
 |임지수</br>[@jisooooooooooo](https://github.com/jisooooooooooo)|권새봄</br>[@kwonsaebom](https://github.com/kwonsaebom)|신지수</br>[@shinjigu](https://github.com/shinjigu)|이윤지</br>[@Leeyoonji23](https://github.com/Leeyoonji23)|
@@ -29,7 +33,7 @@
 
 **보조 브랜치**
 - **`feat/#issue/기능명`**: feature 브랜치. 새로운 기능 개발
-- **`fix/#issue`**:feature 브랜치 생성 후 버그가 생겼을 때 수정하는 브랜치
+- **`fix/#issue`**: feature 브랜치 생성 후 버그가 생겼을 때 수정하는 브랜치
 
 ### Commit Convention
 | 태그 | 설명 |
