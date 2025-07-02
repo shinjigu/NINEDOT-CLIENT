@@ -1,4 +1,4 @@
-import { generateGoogleLoginUrl } from './utils';
+import { generateGoogleLoginUrl } from './util/generateGoogleLoginUrl';
 
 const GoogleLoginButton = () => {
   const handleGoogleLogin = () => {
