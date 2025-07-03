@@ -1,9 +1,5 @@
 function App() {
-  return (
-    <>
-      <h1>🚀 CI/CD 테스트</h1>
-    </>
-  );
+  return <></>;
 }
 
 export default App;
