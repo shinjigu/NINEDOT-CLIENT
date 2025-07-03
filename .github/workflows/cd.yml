@@ -55,12 +55,7 @@ jobs:
           destination-github-username: 'shinjigu'
           destination-repository-name: 'NINEDOT-CLIENT'
           user-email: ${{ secrets.EMAIL }}
-          commit-message: |
-            🚀 Auto Deploy from ${{ github.ref_name }}
-            
-            ${{ github.event.head_commit.message || 'Deploy to Vercel' }}
-            
-            Built at: ${{ github.event.head_commit.timestamp }}
+          commit-message: "🚀 Latest deployment"
           target-branch: main
           
       - name: Test get variable exported by push-to-another-repository
