@@ -1,0 +1,64 @@
+name: CD
+
+on:
+  push:
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+          
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          cache-dependency-path: 'pnpm-lock.yaml'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build project
+        run: pnpm build
+        
+      - name: Prepare deployment files
+        run: |
+          mkdir -p output
+          # 빌드된 파일들을 output 디렉토리로 복사
+          cp -R dist/* output/
+          # 필요한 다른 파일들도 복사
+          cp package.json output/ || true
+          cp -R public output/ || true
+          echo "Deployment prepared at $(date)" > output/BUILD_INFO.txt
+          
+      - name: Push to fork repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.AUTO_ACTIONS }}
+        with:
+          source-directory: 'output'
+          destination-github-username: 'shinjigu'
+          destination-repository-name: 'NINEDOT-CLIENT'
+          user-email: ${{ secrets.EMAIL }}
+          commit-message: |
+            🚀 Auto Deploy from ${{ github.ref_name }}
+            
+            ${{ github.event.head_commit.message || 'Deploy to Vercel' }}
+            
+            Built at: ${{ github.event.head_commit.timestamp }}
+          target-branch: main
+          
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
